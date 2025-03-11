@@ -192,6 +192,7 @@
 
         submitBtn.addEventListener("click", (event) => {
             event.preventDefault();
+            document.getElementById('MyAudioElement').play();
             let tut1Grade = parseFloat(document.querySelector("#tut1-grade").value);
             let tut2Grade = parseFloat(document.querySelector("#tut2-grade").value);
             let tut3Grade = parseFloat(document.querySelector("#tut3-grade").value);
@@ -229,7 +230,6 @@
                 } else {
                     finalGradeArea.classList.add("d-none")
                 }
-                document.getElementById('MyAudioElement').play();
             }
         });
 
