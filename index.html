@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Calculadora de Média do Módulo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #1b1b1b;
+            font-size: 1rem;
+            font-family: "Roboto", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            font-variation-settings: "wdth" 100;
+        }
+
+        .wrapper {
+            background-image: url('./background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            width: 500px;
+            max-width: 80%;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        form .form-group {
+            display: block;
+            width: 100%;
+        }
+        
+        form .form-group:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+
+        form .form-group label {
+            font-size: 0.8rem;
+            color: #1b1b1b;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+
+        form .form-group input {
+            width: 100%;
+        }
+
+        h1 {
+            position: absolute;
+            top: -20px;
+            font-weight: 600;
+            font-size: 2rem;
+            right: 0;
+            left: 0;
+            text-align: center;
+            color: dodgerblue;
+        }
+
+        h6 {
+             font-weight: 600;
+             text-transform: uppercase;
+             font-size: 1.25rem;
+             text-align: center;
+             margin-bottom: 1rem;
+        }
+
+        p {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #6d6c6c;
+        }
+
+        #final-grade {
+            margin: 3rem 0 3rem 0;
+        }
+
+        #final-grade.d-none {
+            display: none;
+        }
+
+        #final-grade span {
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        #final-grade #final-grade-value {
+            font-weight: 600;
+            text-transform: uppercase;
+            color: green;
+        }
+
+        button {
+            padding: 0.5rem;
+            background-color: dodgerblue;
+            border: none;
+            outline: none;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <audio id="MyAudioElement" autoplay>
+            <source src="theme.mp3" type="audio/mp3">
+            Seu navegador não possui suporte ao elemento audio
+        </audio>
+
+        <form action="#" autocomplete="off">
+            <h1>Média do Módulo</h1>
+            <h6>Tutoria</h6>
+            <div class="form-group">
+                <label for="tut1-grade">Média do Tema 1 da Tutoria</label>
+                <input type="number" name="" id="tut1-grade" min="0" max="10" required>
+            </div>
+            <div class="form-group">
+                <label for="tut2-grade">Média do Tema 2 da Tutoria</label>
+                <input type="number" name="" id="tut2-grade" min="0" max="10" required>
+            </div>
+            <div class="form-group">
+                <label for="tut3-grade">Média do Tema 3 da Tutoria</label>
+                <input type="number" name="" id="tut3-grade" min="0" max="10" required>
+            </div>
+            <div class="form-group">
+                <label for="tut4-grade">Média do Tema 4 da Tutoria</label>
+                <input type="number" name="" id="tut4-grade" min="0" max="10" required>
+            </div>
+            <div class="form-group">
+                <label for="tut5-grade">Média do Tema 5 da Tutoria</label>
+                <input type="number" name="" id="tut5-grade" min="0" max="10" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tut-exam-grade">Nota da Prova Somativa da Tutoria</label>
+                <input type="number" name="" id="tut-exam-grade" min="0" max="10" required>
+            </div>
+            <br/>
+            <hr />
+            <br/>
+            <h6>Morfologia</h6>
+            <div class="form-group">
+                <label for="histo-grade">Nota de Histologia</label>
+                <input type="number" name="" id="histo-grade" min="0" max="10" required>
+            </div>
+            <div class="form-group">
+                <label for="fisio-grade">Nota de Fisiologia</label>
+                <input type="number" name="" id="fisio-grade" min="0" max="10" required>
+            </div>
+            <div class="form-group">
+                <label for="anato-grade">Nota de Anatomia</label>
+                <input type="number" name="" id="anato-grade" min="0" max="10" required>
+            </div>
+            <button id="submit-btn">Calcular</button>
+
+            <div id="final-grade" class="d-none">
+                <span>Média Final do Módulo: </span><span id="final-grade-value">9.4</span>
+            </div>
+            <p>A média é um valor aproximado por cálculos ponderados. A média final entre tutoria e morfologia compõe a média do módulo que não contempla as demais matérias, como tics, habilidades clínicas, extensionista, comunicação que possuem médias separadas.</p>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            document.getElementById('MyAudioElement').play();
+        });
+
+        const submitBtn = document.querySelector("#submit-btn");
+
+        let finalGradeArea = document.querySelector("#final-grade");
+        let finalGradeText = document.querySelector("#final-grade-value");
+
+        submitBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            let tut1Grade = parseFloat(document.querySelector("#tut1-grade").value);
+            let tut2Grade = parseFloat(document.querySelector("#tut2-grade").value);
+            let tut3Grade = parseFloat(document.querySelector("#tut3-grade").value);
+            let tut4Grade = parseFloat(document.querySelector("#tut4-grade").value);
+            let tut5Grade = parseFloat(document.querySelector("#tut5-grade").value);
+            let tutExamGrade = parseFloat(document.querySelector("#tut-exam-grade").value);
+
+            let histoGrade = parseFloat(document.querySelector("#histo-grade").value);
+            let fisioGrade = parseFloat(document.querySelector("#fisio-grade").value);
+            let anatoGrade = parseFloat(document.querySelector("#anato-grade").value);
+
+            if (tut1Grade == "" || tut1Grade == null || tut1Grade == undefined
+                || tut1Grade == "" || tut1Grade == null || tut1Grade == undefined
+                || tut2Grade == "" || tut2Grade == null || tut2Grade == undefined
+                || tut3Grade == "" || tut3Grade == null || tut3Grade == undefined
+                || tut4Grade == "" || tut4Grade == null || tut4Grade == undefined
+                || tut5Grade == "" || tut5Grade == null || tut5Grade == undefined
+                || tutExamGrade == "" || tutExamGrade == null || tutExamGrade == undefined
+
+                || histoGrade == "" || histoGrade == null || histoGrade == undefined
+                || fisioGrade == "" || fisioGrade == null || fisioGrade == undefined
+                || anatoGrade == "" || anatoGrade == null || anatoGrade == undefined
+            ) {
+                alert("Todos os campos devem estar preenchidos.");
+            } else {
+                let mediaTutoriaFormativa = (tut1Grade + tut2Grade + tut3Grade + tut4Grade + tut5Grade) / 5.0;
+                let notaTutoriaSomativa = tutExamGrade;
+                let mediaMorfologia = (histoGrade + fisioGrade + anatoGrade) / 3.3;
+
+                let mediaFinal = ((mediaTutoriaFormativa * 4) + (notaTutoriaSomativa * 3) + (mediaMorfologia * 3)) / 10.0;
+                finalGradeText.innerHTML = (parseInt(mediaFinal * 100) / 100).toString();
+
+                if (finalGradeArea.classList.contains("d-none")) {
+                    finalGradeArea.classList.remove("d-none")
+                } else {
+                    finalGradeArea.classList.add("d-none")
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
