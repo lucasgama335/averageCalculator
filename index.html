@@ -496,13 +496,13 @@
             } else {
                 if (finalGradeArea.classList.contains("d-none")) {
                     finalGradeArea.classList.remove("d-none");
-
+                    
                     let mediaTutoriaFormativa = tutClassGrade;
                     let notaTutoriaSomativa = tutExamGrade;
                     let mediaMorfologia = (histoGrade + fisioGrade + anatoGrade) / 3.0;
-                    console.log(mediaTutoriaFormativa, notaTutoriaSomativa, mediaMorfologia);
+
                     let mediaFinal = ((mediaTutoriaFormativa * 4) + (notaTutoriaSomativa * 3) + (mediaMorfologia * 3)) / 10.0;
-                    finalGradeText.innerHTML = mediaFinal.toString();
+                    finalGradeText.innerHTML = (parseInt(mediaFinal * 100) / 100).toString();
                 } else {
                     finalGradeArea.classList.add("d-none");
                 }
