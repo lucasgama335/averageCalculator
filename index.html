@@ -28,12 +28,13 @@
             width: 100%;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
         form {
-            width: 500px;
+            width: 800px;
             max-width: 80%;
             background-color: white;
             padding: 2rem;
@@ -42,8 +43,37 @@
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             position: relative;
-            margin: 3rem 0;
+            margin: 3rem 0 0 0;
+            border: 2px solid transparent;
+            transition: all 0.5s;
+            margin-bottom: 1rem;
         }
+
+        form:hover {
+            border-color: dodgerblue;
+        }
+
+        form svg {
+            position: absolute;
+        }
+
+        .example-5 .line {
+        stroke-dasharray: 260;
+        stroke-width: 1px;
+        fill: transparent;
+        stroke: rgba(78, 255, 13, 0.3);
+        animation: svgAnimation 2.5s linear infinite;
+        }
+
+        @keyframes svgAnimation {
+        from {
+            stroke-dashoffset: 0;
+        }
+        to {
+            stroke-dashoffset: 1000;
+        }
+        }
+
 
         form .form-group {
             display: block;
@@ -66,15 +96,15 @@
             width: 100%;
         }
 
-        h1 {
+        .form-title {
             position: absolute;
-            top: -20px;
-            font-weight: 600;
-            font-size: 2rem;
-            right: 0;
+            top: -15px;
+            padding: 1rem;
             left: 0;
-            text-align: center;
-            color: dodgerblue;
+        }
+        .form-title img {
+            width: 70px;
+            height: auto;
         }
 
         h6 {
@@ -89,10 +119,39 @@
             margin-top: 2rem;
             font-size: 0.8rem;
             color: #6d6c6c;
+            text-align: justify;
         }
 
         #final-grade {
-            margin: 3rem 0 3rem 0;
+            position: relative;
+            margin: 0 0 3rem 0;
+            width: 800px;
+            max-width: 80%;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            position: relative;
+            margin: 3rem 0 0 0;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all .5s;
+        }
+
+        #final-grade .times {
+            position: absolute;
+            top: 0;
+            right: 0;
+            text-transform: uppercase;
+            font-size: 1.25rem;
+            color: red;
+            cursor: pointer;
+        }
+
+        #final-grade:hover {
+            border-color: green;
         }
 
         #final-grade.d-none {
@@ -111,13 +170,235 @@
         }
 
         button {
+            width: 100%;
             padding: 0.5rem;
             background-color: dodgerblue;
             border: none;
             outline: none;
             color: white;
             cursor: pointer;
+            text-transform: uppercase;
         }
+
+        .columnsGroup {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+
+        .columnsGroup .colunmOne {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .columnsGroup .colunmTwo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .columnsGroup {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        .custom-field {
+            position: relative;
+            font-size: 14px;
+            border-top: 20px solid transparent;
+            margin-bottom: 5px;
+            display: inline-block;
+            --field-padding: 12px;
+            width: 100%;
+        }
+
+        .custom-field input {
+            border: none;
+            -webkit-appearance: none;
+            -ms-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: #f2f2f2;
+            padding: var(--field-padding);
+            border-radius: 3px;
+            width: 100%;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .custom-field .placeholder {
+            position: absolute;
+            left: var(--field-padding);
+            width: calc(100% - (var(--field-padding) * 2));
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            top: 22px;
+            line-height: 100%;
+            transform: translateY(-50%);
+            color: #aaa;
+            transition: 
+                top 0.3s ease,
+                color 0.3s ease,
+                font-size 0.3s ease;
+        }
+
+        .custom-field input.dirty + .placeholder,
+        .custom-field input:focus + .placeholder,
+        .custom-field input:not(:placeholder-shown) + .placeholder {
+            top: -10px;
+            font-size: 10px;
+            color: #222;
+        }
+
+        .custom-field .error-message {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            font-size: 12px;
+            background: #d30909;
+            color: #fff;
+            height: 24px;
+        }
+
+        .custom-field .error-message:empty {
+            opacity: 0;
+        }
+
+        /* ONE */
+        .custom-field.one input {
+            background: none;
+            border: 2px solid #ddd;
+            transition: border-color 0.3s ease;
+        }
+
+        .custom-field.one input + .placeholder {
+            left: 8px;
+            padding: 0 5px;
+        }
+
+        .custom-field.one input.dirty,
+        .custom-field.one input:not(:placeholder-shown),
+        .custom-field.one input:focus {
+            border-color: dodgerblue;
+            transition-delay: 0.1s
+        }
+
+        .custom-field.one input.dirty + .placeholder,
+        .custom-field.one input:not(:placeholder-shown) + .placeholder,
+        .custom-field.one input:focus + .placeholder {
+            top: 0;
+            font-size: 10px;
+            color: #222;
+            background: #fff;
+            width: auto
+        }
+
+        /* TWO */
+        .custom-field.two input {
+            border-radius: 0;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            background:
+                linear-gradient(90deg, dodgerblue, dodgerblue) center bottom/0 0.15em no-repeat,
+                linear-gradient(90deg, #ccc, #ccc) left bottom/100% 0.15em no-repeat,
+                linear-gradient(90deg, #fafafa, #fafafa) left bottom/100% no-repeat;
+            transition: background-size 0.3s ease;
+        }
+
+        .custom-field.two input.dirty,
+        .custom-field.two input:not(:placeholder-shown),
+        .custom-field.two input:focus {
+            background-size: 100% 0.15em, 100% 0.1em, 100%;
+        }
+
+        /* THREE */
+        .custom-field.three {
+            --draw-duration: 0.1s;
+            --draw-color: dodgerblue;
+            --draw-line-width: 2px;
+            --draw-easing: linear;
+        }
+
+        .custom-field.three .border {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: none;
+            display: flex;
+            align-items: center;
+            padding-left: 12px;
+            borde-radius: 3px;
+        }
+
+        .custom-field.three .border::after, 
+        .custom-field.three .border::before {
+            content: "";
+            width: 0;
+            height: 0;
+            display: inline-block;
+            position: absolute;
+            border-radius: 3px;
+        }
+
+        .custom-field.three .border::before {
+            left: 0;
+            bottom: 0;
+            border-right: 0px solid var(--draw-color);
+            border-bottom: 0px solid var(--draw-color);
+            transition: 
+                border 0s linear calc(var(--draw-duration) * 4),
+                height var(--draw-duration) var(--draw-easing) calc(var(--draw-duration) * 2),
+                width var(--draw-duration) var(--draw-easing) calc(var(--draw-duration) * 3);
+        }
+
+        .custom-field.three .border::after {
+            right: 0;
+            top: 0;
+            border-left: 0px solid var(--draw-color);
+            border-top: 0px solid var(--draw-color);
+            transition: 
+                border 0s linear calc(var(--draw-duration) * 2),
+                height var(--draw-duration) var(--draw-easing),
+                width var(--draw-duration) var(--draw-easing) var(--draw-duration);
+        }
+
+        .custom-field.three input:focus ~ .border::before,
+        .custom-field.three input:not(:placeholder-shown) ~ .border::before,
+        .custom-field.three input.dirty ~ .border::before,
+        .custom-field.three input:focus ~ .border::after,
+        .custom-field.three input:not(:placeholder-shown) ~ .border::after,
+        .custom-field.three input.dirty ~ .border::after {
+            width: 100%;
+            height: 100%;
+            border-width: var(--draw-line-width);
+        }
+
+        .custom-field.three input:not(:placeholder-shown) ~ .border::before,
+        .custom-field.three input.dirty ~ .border::before,
+        .custom-field.three input:focus ~ .border::before {
+            transition-delay: 0s, var(--draw-duration), 0s;
+        }
+
+        .custom-field.three input:not(:placeholder-shown) ~ .border::after,
+        .custom-field.three input.dirty ~ .border::after,
+        .custom-field.three input:focus ~ .border::after {
+            transition-delay: 
+                calc(var(--draw-duration) * 2), 
+                calc(var(--draw-duration) * 3), 
+                calc(var(--draw-duration) * 2);
+        }
+
     </style>
 </head>
 <body>
@@ -128,56 +409,51 @@
         </audio>
 
         <form action="#" autocomplete="off">
-            <h1>Média do Módulo</h1>
-            <h6>Tutoria</h6>
-            <div class="form-group">
-                <label for="tut1-grade">Média do Tema 1 da Tutoria</label>
-                <input type="number" name="" id="tut1-grade" min="0" max="10" required>
+            <div class="form-title">
+                <img src="icon.png" alt="">
             </div>
-            <div class="form-group">
-                <label for="tut2-grade">Média do Tema 2 da Tutoria</label>
-                <input type="number" name="" id="tut2-grade" min="0" max="10" required>
-            </div>
-            <div class="form-group">
-                <label for="tut3-grade">Média do Tema 3 da Tutoria</label>
-                <input type="number" name="" id="tut3-grade" min="0" max="10" required>
-            </div>
-            <div class="form-group">
-                <label for="tut4-grade">Média do Tema 4 da Tutoria</label>
-                <input type="number" name="" id="tut4-grade" min="0" max="10" required>
-            </div>
-            <div class="form-group">
-                <label for="tut5-grade">Média do Tema 5 da Tutoria</label>
-                <input type="number" name="" id="tut5-grade" min="0" max="10" required>
-            </div>
+            <div class="columnsGroup">
+                <div class="colunmOne">
+                    <h6>Tutoria</h6>
+                    
+                    <label class="custom-field one" for="tut-class-grade">
+                        <input type="number" id="tut-class-grade" placeholder=" " min="0" max="10" required/>
+                        <span class="placeholder">Nota Formativa das Tutorias</span>
+                    </label>
 
-            <div class="form-group">
-                <label for="tut-exam-grade">Nota da Prova Somativa da Tutoria</label>
-                <input type="number" name="" id="tut-exam-grade" min="0" max="10" required>
-            </div>
-            <br/>
-            <hr />
-            <br/>
-            <h6>Morfologia</h6>
-            <div class="form-group">
-                <label for="histo-grade">Nota de Histologia</label>
-                <input type="number" name="" id="histo-grade" min="0" max="10" required>
-            </div>
-            <div class="form-group">
-                <label for="fisio-grade">Nota de Fisiologia</label>
-                <input type="number" name="" id="fisio-grade" min="0" max="10" required>
-            </div>
-            <div class="form-group">
-                <label for="anato-grade">Nota de Anatomia</label>
-                <input type="number" name="" id="anato-grade" min="0" max="10" required>
+                    <label class="custom-field one" for="tut-exam-grade">
+                        <input type="number" id="tut-exam-grade" placeholder=" " min="0" max="10" required/>
+                        <span class="placeholder">Nota da Prova Somativa da Tutoria</span>
+                    </label>
+                </div>
+                <div class="colunmTwo">
+                    <h6>Morfologia</h6>
+                    <label class="custom-field one" for="histo-grade">
+                        <input type="number" id="histo-grade" placeholder=" " min="0" max="10" required/>
+                        <span class="placeholder">Nota de Histologia</span>
+                    </label>
+
+                    <label class="custom-field one" for="fisio-grade">
+                        <input type="number" id="fisio-grade" placeholder=" " min="0" max="10" required/>
+                        <span class="placeholder">Nota de Fisiologia</span>
+                    </label>
+
+                    <label class="custom-field one" for="anato-grade">
+                        <input type="number" id="anato-grade" placeholder=" " min="0" max="10" required/>
+                        <span class="placeholder">Nota de Anatomia</span>
+                    </label>
+    
+                    
+                </div>
             </div>
             <button id="submit-btn">Calcular</button>
 
-            <div id="final-grade" class="d-none">
-                <span>Média Final do Módulo: </span><span id="final-grade-value">9.4</span>
-            </div>
-            <p>A média é um valor aproximado por cálculos ponderados. A média final entre tutoria e morfologia compõe a média do módulo que não contempla as demais matérias, como tics, habilidades clínicas, extensionista, comunicação que possuem médias separadas.</p>
         </form>
+        <div id="final-grade" class="d-none">
+            <div class="times">X</div>
+            <span>Média Final do Módulo: </span><span id="final-grade-value">9.4</span>
+            <p>A média é um valor aproximado por cálculos ponderados. A média final entre tutoria e morfologia compõe a média do módulo que não contempla as demais matérias, como tics, habilidades clínicas, extensionista, comunicação que possuem médias separadas.</p>
+        </div>
     </div>
 
     <script>
@@ -186,49 +462,47 @@
         });
 
         const submitBtn = document.querySelector("#submit-btn");
+        const closeGrades = document.querySelector("#final-grade .times");
 
         let finalGradeArea = document.querySelector("#final-grade");
         let finalGradeText = document.querySelector("#final-grade-value");
 
+        closeGrades.addEventListener("click", (event) => {
+            if (!finalGradeArea.classList.contains("d-none")) {
+                finalGradeArea.classList.add("d-none");
+            }
+        });
+
         submitBtn.addEventListener("click", (event) => {
             event.preventDefault();
             document.getElementById('MyAudioElement').play();
-            let tut1Grade = parseFloat(document.querySelector("#tut1-grade").value);
-            let tut2Grade = parseFloat(document.querySelector("#tut2-grade").value);
-            let tut3Grade = parseFloat(document.querySelector("#tut3-grade").value);
-            let tut4Grade = parseFloat(document.querySelector("#tut4-grade").value);
-            let tut5Grade = parseFloat(document.querySelector("#tut5-grade").value);
+            
+            let tutClassGrade = parseFloat(document.querySelector("#tut-class-grade").value);
             let tutExamGrade = parseFloat(document.querySelector("#tut-exam-grade").value);
 
             let histoGrade = parseFloat(document.querySelector("#histo-grade").value);
             let fisioGrade = parseFloat(document.querySelector("#fisio-grade").value);
             let anatoGrade = parseFloat(document.querySelector("#anato-grade").value);
 
-            if (tut1Grade == "" || tut1Grade == null || tut1Grade == undefined
-                || tut1Grade == "" || tut1Grade == null || tut1Grade == undefined
-                || tut2Grade == "" || tut2Grade == null || tut2Grade == undefined
-                || tut3Grade == "" || tut3Grade == null || tut3Grade == undefined
-                || tut4Grade == "" || tut4Grade == null || tut4Grade == undefined
-                || tut5Grade == "" || tut5Grade == null || tut5Grade == undefined
-                || tutExamGrade == "" || tutExamGrade == null || tutExamGrade == undefined
+            if (tutClassGrade == "" || tutClassGrade == null || tutClassGrade == undefined || isNaN(tutClassGrade)
+                || tutExamGrade == "" || tutExamGrade == null || tutExamGrade == undefined || isNaN(tutExamGrade)
 
-                || histoGrade == "" || histoGrade == null || histoGrade == undefined
-                || fisioGrade == "" || fisioGrade == null || fisioGrade == undefined
-                || anatoGrade == "" || anatoGrade == null || anatoGrade == undefined
+                || histoGrade == "" || histoGrade == null || histoGrade == undefined || isNaN(histoGrade)
+                || fisioGrade == "" || fisioGrade == null || fisioGrade == undefined || isNaN(fisioGrade)
+                || anatoGrade == "" || anatoGrade == null || anatoGrade == undefined || isNaN(anatoGrade)
             ) {
                 alert("Todos os campos devem estar preenchidos.");
             } else {
-                let mediaTutoriaFormativa = (tut1Grade + tut2Grade + tut3Grade + tut4Grade + tut5Grade) / 5.0;
-                let notaTutoriaSomativa = tutExamGrade;
-                let mediaMorfologia = (histoGrade + fisioGrade + anatoGrade) / 3.3;
-
-                let mediaFinal = ((mediaTutoriaFormativa * 4) + (notaTutoriaSomativa * 3) + (mediaMorfologia * 3)) / 10.0;
-                finalGradeText.innerHTML = (parseInt(mediaFinal * 100) / 100).toString();
-
                 if (finalGradeArea.classList.contains("d-none")) {
-                    finalGradeArea.classList.remove("d-none")
+                    finalGradeArea.classList.remove("d-none");
+                    let mediaTutoriaFormativa = tutClassGrade;
+                    let notaTutoriaSomativa = tutExamGrade;
+                    let mediaMorfologia = (histoGrade + fisioGrade + anatoGrade) / 3.3;
+
+                    let mediaFinal = ((mediaTutoriaFormativa * 4) + (notaTutoriaSomativa * 3) + (mediaMorfologia * 3)) / 10.0;
+                    finalGradeText.innerHTML = (parseInt(mediaFinal * 100) / 100).toString();
                 } else {
-                    finalGradeArea.classList.add("d-none")
+                    finalGradeArea.classList.add("d-none");
                 }
             }
         });
